@@ -74,8 +74,10 @@ export default [
     name: '信息添加',
     component: Main,
     meta: {
+      // hideInMenu: true,
       hideInBread: true,
-      title: '信息添加'
+      title: '信息添加',
+      access: ['admin']
     },
     children: [
       {

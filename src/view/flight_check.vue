@@ -5,6 +5,7 @@
     />
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'FlightCheck',
   data () {
@@ -22,6 +23,18 @@ export default {
         { flight_id: 4, take_off: '2020-11-19 10:00', land_time: '2020-11-19 12:00', price: 200 }
       ]
     }
+  },
+
+  mounted () {
+    this.getUserInfo().then(res => {
+      console.log(res)
+    })
+  },
+
+  methods: {
+    ...mapActions([
+      'getUserInfo'
+    ])
   }
 }
 </script>
