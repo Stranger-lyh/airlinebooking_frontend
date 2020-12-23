@@ -1,11 +1,11 @@
 <template>
 <div>
   <Row>
-    <i-col span="8">
+    <i-col span="24">
     <Card>
       <Row>
         <i-col offset="4">
-          <Form :model="filter" :label-width="80">
+          <Form ref="formInline" :model="filter"  inline>
             <FormItem label="起飞地点">
               <div class="input_width_150">
                 <Input v-model="filter.start"/>
@@ -22,10 +22,11 @@
               </div>
             </FormItem>
             <FormItem>
+                <br>
                 <Button type="primary" @click="onConfirmFilter">筛选</Button>
                 <Button type="primary" style="margin-left: 8px" @click="onClearFilter">清空查询条件</Button>
             </FormItem>
-      </Form>
+          </Form>
         </i-col>
       </Row>
     </Card>
@@ -34,6 +35,7 @@
     <Table
       :data="flightData"
       :columns="column"
+      size="large"
     />
     <Modal
       v-model="bookingModal"
@@ -53,6 +55,12 @@
               <h5>机票价格:</h5>&nbsp;
               {{ confirmData.price }}
             </ListItem>
+            <ListItem>
+              <Radio v-model="luggage">托运行李</Radio>
+            </ListItem>
+            <ListItem>
+              <Input v-model="weight" :disabled="!luggage" placeholder="托运行李的重量(KG)"/>
+            </ListItem>
         </List>
     </Modal>
 </div>
@@ -66,10 +74,36 @@ export default {
     return {
       column: [
         { title: '航班id', key: 'flight_id' },
-        { title: '起飞-降落地点', key: 'place' },
+        { title: '起飞-降落地点',
+          key: 'place',
+          renderHeader: (h, params) => {
+            return h('Tag', {
+              props: {
+                color: 'blue'
+              }
+            }, '\xa0\xa0\xa0\xa0\xa0起飞-降落地点\xa0\xa0\xa0\xa0\xa0')
+          }
+        },
         { title: '时间', key: 'time', minWidth: 150 },
         { title: '航空公司', key: 'companyName' },
-        { title: '价格', key: 'price' },
+        { title: '价格',
+          render: (h, params) => {
+            return h('div', {}, [
+              h('font', {
+                style: {
+                  color: 'red',
+                  fontSize: '20px'
+                }
+              }, params.row.price),
+              h('font', {
+                style: {
+                  fontSize: '8px'
+                }
+              }, ' 起')
+            ])
+          }
+
+        },
         { title: '操作',
           render: (h, params) => {
             return h('Button', {
@@ -88,7 +122,9 @@ export default {
       startPlace: '',
       filter: {},
       originFlightData: [],
-      confirmData: {}
+      confirmData: {},
+      luggage: false,
+      weight: ''
     }
   },
 
@@ -97,6 +133,8 @@ export default {
     let res = await queryAllFlight()
     this.originFlightData = res.data
     this.getFlightData()
+    this.filter.end = this.$store.state.app.gotoPlace
+    this.onConfirmFilter()
   },
 
   methods: {
@@ -105,6 +143,7 @@ export default {
     ]),
 
     onBook (data) {
+      this.luggage = false
       this.bookingModal = true
       this.confirmData.time = data.time
       this.confirmData.place = data.place
@@ -165,7 +204,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .input_width_150{
     width:150px;
 }

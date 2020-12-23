@@ -30,23 +30,24 @@ export default [
   {
     path: '/',
     name: '_home',
-    redirect: '/flight-check',
+    redirect: '/home',
     component: Main,
     meta: {
       hideInMenu: true,
-      notCache: true
+      notCache: true,
+      hideInBread: true
     },
     children: [
       {
         path: '/home',
-        name: 'home',
+        name: 'HomePage',
         meta: {
           hideInMenu: true,
           title: '首页',
           notCache: true,
           icon: 'md-home'
         },
-        component: () => import('@/view/single-page/home')
+        component: () => import('@/view/homePage')
       }
     ]
   },
@@ -70,6 +71,25 @@ export default [
     ]
   },
   {
+    path: '/h',
+    name: 'home',
+    component: Main,
+    meta: {
+      hideInBread: true,
+      title: '热门城市'
+    },
+    children: [
+      {
+        path: '/home',
+        name: '热门城市',
+        meta: {
+          title: '热门城市'
+        },
+        component: () => import('@/view/homePage')
+      }
+    ]
+  },
+  {
     path: '/add',
     name: '信息添加',
     component: Main,
@@ -87,6 +107,26 @@ export default [
           title: '信息添加'
         },
         component: () => import('@/view/addTabs.vue')
+      }
+    ]
+  },
+  {
+    path: '/info',
+    name: '个人信息',
+    component: Main,
+    meta: {
+      // hideInMenu: true,
+      hideInBread: true,
+      title: '个人信息'
+    },
+    children: [
+      {
+        path: '/user-info',
+        name: '个人信息',
+        meta: {
+          title: '个人信息'
+        },
+        component: () => import('@/view/userInfo.vue')
       }
     ]
   }

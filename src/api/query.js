@@ -15,3 +15,7 @@ export const queryAllCompany = () => {
 export const queryAllFlight = () => {
   return axios.request({ url: '/queryAllFlight/', method: 'get' })
 }
+
+export const queryAccount = () => {
+  return axios.request({ url: '/queryAccount/', method: 'get' })
+}

@@ -23,7 +23,7 @@ export default {
   /**
    * @description 默认打开的首页的路由name值，默认为flight-check
    */
-  homeName: '航班查看',
+  homeName: '热门城市',
   /**
    * @description 需要加载的插件
    */
