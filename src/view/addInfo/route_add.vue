@@ -1,14 +1,14 @@
 <template>
   <Row>
     <Form label-width=80>
-        <FormItem label="型号名称">
+        <FormItem label="起飞机场">
           <div class="input_width_150">
             <Select v-model="from">
                 <Option v-for="item in airports" :value="item.id" :key="item.id">{{item.name}}</Option>
             </Select>
           </div>
         </FormItem>
-        <FormItem label="载客量">
+        <FormItem label="降落机场">
           <div class="input_width_150">
             <Select v-model="to">
                 <Option v-for="item in airports" :value="item.id" :key="item.id">{{item.name}}</Option>

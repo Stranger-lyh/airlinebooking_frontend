@@ -3,7 +3,7 @@
     <i-col span="10" offset="7">
         <Card>
             <Tabs v-model="tabs">
-                <TabPane label="航线添加" name="airline_add">
+                <TabPane label="航班添加" name="airline_add">
                     <flight-add/>
                 </TabPane>
                 <TabPane label="机场添加" name="airport_add">
@@ -18,6 +18,9 @@
                 <TabPane label="航线添加" name="route_add">
                     <route-add/>
                 </TabPane>
+                <TabPane label="飞机添加" name="plane_add">
+                    <plane-add/>
+                </TabPane>
             </Tabs>
         </Card>
     </i-col>
@@ -29,6 +32,7 @@ import AirportAdd from './addInfo/airport_add.vue'
 import CompanyAdd from './addInfo/company_add.vue'
 import PlaneTypeAdd from './addInfo/planetype_add.vue'
 import RouteAdd from './addInfo/route_add.vue'
+import PlaneAdd from './addInfo/plane_add.vue'
 export default {
   name: 'AddTabs',
   components: {
@@ -36,7 +40,8 @@ export default {
     AirportAdd,
     CompanyAdd,
     PlaneTypeAdd,
-    RouteAdd
+    RouteAdd,
+    PlaneAdd
   },
   data () {
     return {
