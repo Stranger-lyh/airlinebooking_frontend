@@ -27,3 +27,6 @@ export const addFlight = (data) => {
 export const addAccount = (data) => {
   return axios.request({ url: 'addAccount/', data: data, method: 'post' })
 }
+export const addBill = (data) => {
+  return axios.request({ url: 'addBill/', data: data, method: 'post' })
+}

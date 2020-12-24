@@ -16,7 +16,7 @@ const USER_MAP = {
   },
   test: {
     name: 'test',
-    user_id: '3',
+    user_id: '123456789',
     access: ['test'],
     token: 'test',
     avatar: 'https://avatars0.githubusercontent.com/u/20942571?s=460&v=4'

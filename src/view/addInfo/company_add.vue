@@ -1,6 +1,6 @@
 <template>
   <Row>
-    <Form label-width=100>
+    <Form :label-width="100">
         <FormItem label="航空公司名称">
           <div class="input_width_150">
             <Input v-model="name" />

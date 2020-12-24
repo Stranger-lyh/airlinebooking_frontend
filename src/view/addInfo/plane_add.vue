@@ -1,6 +1,6 @@
 <template>
   <Row>
-    <Form label-width=90>
+    <Form :label-width="90">
         <FormItem label="飞机型号">
           <div class="input_width_150">
             <Select v-model="type_id">

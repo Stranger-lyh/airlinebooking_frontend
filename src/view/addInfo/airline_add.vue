@@ -2,7 +2,7 @@
 <Row>
     <i-col span="8" offset="8">
         <Card>
-            <Form label-width="80">
+            <Form :label-width="80">
                 <FormItem label="起飞机场">
                   <Input/>
                 </FormItem>

@@ -113,7 +113,6 @@ export default {
         // let urll = require(base + '/' + i + '.jpg')
         images.push(url)
       }
-      console.log(num)
       return images
     },
     getTitleText (num) {
@@ -131,7 +130,6 @@ export default {
       return Math.floor(Math.random() * (max - min)) + min
     },
     log (place) {
-      console.log(place)
       this.$store.commit('setGoto', place)
       this.$router.push({
         name: '航班查看'

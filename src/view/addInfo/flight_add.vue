@@ -1,9 +1,15 @@
 <template>
   <Row>
-    <Form label-width=80>
-        <FormItem label="航线id">
-          <div style="width:150px;">
-            <Input v-model="flightInfo.route_id"/>
+    <Form :label-width="80">
+        <FormItem label="航线">
+          <div style="width:250px;">
+            <Select v-model="flightInfo.route_id">
+              <Option
+                v-for="item in routes"
+                :key="item.routeid"
+                :value="item.routeid"
+              >{{item.name1 + '--' + item.name2}}</Option>
+            </Select>
           </div>
         </FormItem>
         <FormItem label="飞机id">
@@ -36,13 +42,21 @@
 </template>
 <script>
 import { addFlight } from '@/api/addInfo'
+import { queryAllRoute } from '@/api/query'
 import { getErrModalOptions } from '@/libs/util'
 export default {
   name: 'FlightAdd',
   data () {
     return {
-      flightInfo: {}
+      flightInfo: {},
+      routes: []
     }
+  },
+
+  async mounted () {
+    let res = await queryAllRoute()
+    this.routes = res.data
+    console.log(this.routes)
   },
 
   methods: {

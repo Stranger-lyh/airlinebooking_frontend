@@ -1,6 +1,6 @@
 <template>
   <Row>
-    <Form label-width=80>
+    <Form :label-width="80">
         <FormItem label="起飞机场">
           <div class="input_width_150">
             <Select v-model="from">

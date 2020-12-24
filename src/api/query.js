@@ -19,3 +19,11 @@ export const queryAllFlight = () => {
 export const queryAccount = () => {
   return axios.request({ url: '/queryAccount/', method: 'get' })
 }
+
+export const queryAllRoute = () => {
+  return axios.request({ url: '/queryAllRoute/', method: 'get' })
+}
+
+export const queryAllBill = () => {
+  return axios.request({ url: '/queryAllBill/', method: 'get' })
+}
