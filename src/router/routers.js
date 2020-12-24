@@ -91,20 +91,20 @@ export default [
   },
   {
     path: '/add',
-    name: '信息添加',
+    name: '管理员页面',
     component: Main,
     meta: {
       // hideInMenu: true,
       hideInBread: true,
-      title: '信息添加',
+      title: '管理员页面',
       access: ['admin']
     },
     children: [
       {
         path: '/airline-add',
-        name: '信息添加',
+        name: '管理员页面',
         meta: {
-          title: '信息添加'
+          title: '管理员页面'
         },
         component: () => import('@/view/addTabs.vue')
       }
@@ -117,7 +117,8 @@ export default [
     meta: {
       // hideInMenu: true,
       hideInBread: true,
-      title: '个人信息'
+      title: '个人信息',
+      access: ['test']
     },
     children: [
       {

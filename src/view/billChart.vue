@@ -1,7 +1,7 @@
 <template>
   <div
     ref="dom"
-    style="width: 400px;height:300px;"
+    style="width: 700px;height:500px;"
   />
 </template>
 <script>
@@ -26,6 +26,10 @@ export default {
   computed: {
     chartOption: function () {
       return {
+        tooltip: {
+          trigger: 'item',
+          formatter: '{b} : {c}元'
+        },
         xAxis: {
           type: 'category',
           data: this.times
@@ -49,7 +53,7 @@ export default {
   },
   watch: {
     listenChange: function () {
-      this.updateData()
+      console.log(this.data)
       this.$nextTick(() => {
         this.dom = echarts.init(this.$refs.dom, 'tdTheme')
         this.dom.setOption(this.chartOption)
@@ -57,7 +61,6 @@ export default {
     }
   },
   mounted () {
-    this.updateData()
     this.$nextTick(() => {
       this.dom = echarts.init(this.$refs.dom, 'tdTheme')
       this.dom.setOption(this.chartOption)
@@ -65,9 +68,6 @@ export default {
   },
 
   methods: {
-    updateData () {
-
-    }
   }
 }
 </script>

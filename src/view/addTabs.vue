@@ -1,12 +1,19 @@
 <template>
 <div>
 <Row>
-    <i-col span="16" offset="4">
+    <i-col span="18" offset="3">
         <Card>
             <Tabs v-model="tabs">
                 <Row>
                     <i-col span="4" offset="10"></i-col>
                 </Row>
+                <TabPane label="平台营业额" name="billChats">
+                    <Row>
+                        <i-col span="20" offset="2">
+                            <bill-chart :times="time" :data="data"/>
+                        </i-col>
+                    </Row>
+                </TabPane>
                 <TabPane label="航班添加" name="airline_add">
                     <Row>
                         <i-col span="8" offset="6">
@@ -60,7 +67,6 @@
         </Card>
     </i-col>
 </Row>
-<bill-chart/>
 </div>
 </template>
 <script>
@@ -72,6 +78,7 @@ import RouteAdd from './addInfo/route_add.vue'
 import PlaneAdd from './addInfo/plane_add.vue'
 import AccountAdd from './addInfo/account_add.vue'
 import BillChart from './billChart.vue'
+import { estimateBill } from '@/api/query'
 export default {
   name: 'AddTabs',
   components: {
@@ -86,8 +93,23 @@ export default {
   },
   data () {
     return {
-      tabs: 'airline_add'
+      tabs: 'billChats',
+      time: [],
+      data: []
     }
+  },
+  async mounted () {
+    let res = await estimateBill()
+    console.log(res)
+    let time = []
+    let data = []
+    res.data.forEach(item => {
+      time.push(item.time)
+      data.push(item.price)
+    })
+    console.log(time)
+    this.time = JSON.parse(JSON.stringify(time))
+    this.data = JSON.parse(JSON.stringify(data))
   }
 }
 </script>

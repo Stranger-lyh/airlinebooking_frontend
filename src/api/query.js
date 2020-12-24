@@ -27,3 +27,7 @@ export const queryAllRoute = () => {
 export const queryAllBill = () => {
   return axios.request({ url: '/queryAllBill/', method: 'get' })
 }
+
+export const estimateBill = () => {
+  return axios.request({ url: '/estimateBill/', method: 'get' })
+}
