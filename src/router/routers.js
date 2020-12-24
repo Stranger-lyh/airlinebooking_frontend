@@ -129,6 +129,26 @@ export default [
         component: () => import('@/view/userInfo.vue')
       }
     ]
+  },
+  {
+    path: '/chart',
+    name: '航班图',
+    component: Main,
+    meta: {
+      // hideInMenu: true,
+      hideInBread: true,
+      title: '航班图'
+    },
+    children: [
+      {
+        path: '/statistics-chart',
+        name: '航班图',
+        meta: {
+          title: '航班图'
+        },
+        component: () => import('@/view/allFilght.vue')
+      }
+    ]
   }
   /* {
     path: '/message',

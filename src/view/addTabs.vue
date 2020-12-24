@@ -1,4 +1,5 @@
 <template>
+<div>
 <Row>
     <i-col span="16" offset="4">
         <Card>
@@ -59,6 +60,8 @@
         </Card>
     </i-col>
 </Row>
+<bill-chart/>
+</div>
 </template>
 <script>
 import FlightAdd from './addInfo/flight_add.vue'
@@ -68,6 +71,7 @@ import PlaneTypeAdd from './addInfo/planetype_add.vue'
 import RouteAdd from './addInfo/route_add.vue'
 import PlaneAdd from './addInfo/plane_add.vue'
 import AccountAdd from './addInfo/account_add.vue'
+import BillChart from './billChart.vue'
 export default {
   name: 'AddTabs',
   components: {
@@ -77,7 +81,8 @@ export default {
     PlaneTypeAdd,
     RouteAdd,
     PlaneAdd,
-    AccountAdd
+    AccountAdd,
+    BillChart
   },
   data () {
     return {
